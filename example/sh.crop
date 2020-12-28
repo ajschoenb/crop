@@ -1,0 +1,14 @@
+" Fill rsi with a pointer to a pointer to "/bin/sh", rdi with a pointer to "/bin/sh"
+ADDR %6 _data
+ADD %7 %6 $8
+STORE %6 %7
+" Fill rdx with 0 (NULL)
+MOVE %4 $0
+" Call execve()
+SYSCALL $11
+
+" Raw data that we need pointers to
+data :
+RAW $0
+" Raw bytes of "/bin/sh\0"
+RAW $0x0068732f6e69622f
