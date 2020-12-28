@@ -4,7 +4,7 @@ INCLUDE_DIR = include
 
 CCFLAGS = -Wall -Werror -std=c++17 -g
 
-SRCS = $(SRC_DIR)/main.cc
+SRCS = $(SRC_DIR)/*.cc
 BIN = crop
 
 .PHONY : all $(BIN) dummy clean
