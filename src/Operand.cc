@@ -2,11 +2,10 @@
 
 #include <sstream>
 
-Operand::Operand() : Operand(Type::INVALID, 0)
-{}
+Operand::Operand() : Operand(Type::INVALID, 0) {
+}
 
-Operand::Operand(Type _type, value_t _value) : type(_type)
-{
+Operand::Operand(Type _type, value_t _value) : type(_type) {
     if (_type != Type::INVALID && !(_type == Type::REGISTER && _value > REG_MAX)) {
         value = _value;
     }
