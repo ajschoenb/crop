@@ -28,6 +28,9 @@ public:
     CIRNode(Type type, Operand* operands);
     virtual ~CIRNode();
 
+    Type getType();
+    Operand* getOperands();
+
     std::string toString();
 };  // class CIRNode
 

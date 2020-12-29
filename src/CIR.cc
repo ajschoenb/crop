@@ -1,5 +1,7 @@
 #include "crop/CIR.h"
 
+#include "crop/Operand.h"
+
 #include <sstream>
 
 CIRNode::CIRNode() : CIRNode(Type::INVALID, nullptr) {
@@ -13,6 +15,14 @@ CIRNode::~CIRNode() {
         delete[] operands;
         operands = nullptr;
     }
+}
+
+CIRNode::Type CIRNode::getType() {
+    return type;
+}
+
+Operand* CIRNode::getOperands() {
+    return operands;
 }
 
 std::string CIRNode::toString() {
