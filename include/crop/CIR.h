@@ -21,14 +21,16 @@ public:
 
 private:
     Type type;
+    int num_operands;
     Operand* operands;
 
 public:
     CIRNode();
-    CIRNode(Type type, Operand* operands);
+    CIRNode(Type type, int num_operands, Operand* operands);
     virtual ~CIRNode();
 
     Type getType();
+    int getNumOperands();
     Operand* getOperands();
 
     std::string toString();

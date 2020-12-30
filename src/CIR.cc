@@ -4,10 +4,10 @@
 
 #include <sstream>
 
-CIRNode::CIRNode() : CIRNode(Type::INVALID, nullptr) {
+CIRNode::CIRNode() : CIRNode(Type::INVALID, 0, nullptr) {
 }
 
-CIRNode::CIRNode(Type type, Operand* operands) : type(type), operands(operands) {
+CIRNode::CIRNode(Type type, int num_operands, Operand* operands) : type(type), num_operands(num_operands), operands(operands) {
 }
 
 CIRNode::~CIRNode() {
@@ -21,6 +21,10 @@ CIRNode::Type CIRNode::getType() {
     return type;
 }
 
+int CIRNode::getNumOperands() {
+    return num_operands;
+}
+
 Operand* CIRNode::getOperands() {
     return operands;
 }
@@ -30,46 +34,45 @@ std::string CIRNode::toString() {
     ret << "CIRNode {";
     switch (type) {
         case INVALID: {
-            ret << "INVALID ";
+            ret << "INVALID";
             break;
         }
         case STORE: {
-            ret << "STORE ";
+            ret << "STORE";
             break;
         }
         case LOAD: {
-            ret << "LOAD ";
+            ret << "LOAD";
             break;
         }
         case MOVE: {
-            ret << "MOVE ";
+            ret << "MOVE";
             break;
         }
         case JUMP: {
-            ret << "JUMP ";
+            ret << "JUMP";
             break;
         }
         case SYSCALL: {
-            ret << "SYSCALL ";
+            ret << "SYSCALL";
             break;
         }
         case RAW: {
-            ret << "RAW ";
+            ret << "RAW";
             break;
         }
         case ADD: {
-            ret << "ADD ";
+            ret << "ADD";
             break;
         }
         case ADDR: {
-            ret << "ADDR ";
+            ret << "ADDR";
             break;
         }
     }
-    Operand* tmp = operands;
-    while (tmp != nullptr) {
-        ret << tmp->toString();
-        tmp++;
+    
+    for (int i = 0; i < num_operands; i++) {
+        ret << " " << operands[i].toString();
     }
     ret << "}";
     return ret.str();

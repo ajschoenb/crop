@@ -21,29 +21,29 @@ value_t Operand::getValue() {
 
 std::string Operand::toString() {
     std::stringstream ret;
-    ret << "OP {";
+    ret << "OP{";
     switch (type) {
         case Type::INVALID: {
-            ret << "INVALID ";
+            ret << "INVALID";
             break;
         }
         case Type::REGISTER: {
-            ret << "REGISTER ";
+            ret << "REGISTER";
             break;
         }
         case Type::IMMEDIATE: {
-            ret << "IMMEDIATE ";
+            ret << "IMMEDIATE";
             break;
         }
         case Type::MEMORY: {
-            ret << "MEMORY ";
+            ret << "MEMORY";
             break;
         }
         case Type::LABEL: {
-            ret << "LABEL ";
+            ret << "LABEL";
             break;
         }
     }
-    ret << value << "}";
+    ret << " " << value << "}";
     return ret.str();
 }
